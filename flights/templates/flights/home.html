@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Air Starline{% endblock %}
+{% block body %}
+
+<html>
+   <head>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!------ Include the above in your HEAD tag ---------->
+      <title>AIR STARLINE</title>
+      <meta charset="UTF-8">
+      <meta name="application-name" content="evernote">
+      <meta name="description" content="best note taking app">
+      <meta name="keywords" content="notetaking,evernote">
+      <meta name="author" content="veena shree">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato');
+        body
+        {
+          font-family: 'Lato', sans-serif;
+        }
+        header {
+          max-height: 130px;
+        }
+
+        .heading {
+          padding: 0px;
+          margin-top: 0px;
+        }
+
+        .home {
+          margin-left: 71px;
+        }
+
+        .btn-default {
+          color: white;
+          background-color: #ff0000;
+        }
+
+        .log-btn {
+          margin-right: 50px;
+          margin-left: 20px;
+          width: 121px;
+          border: solid red 2px;
+          color: red;
+        }
+
+        .bg-color {
+          background-image: url("https://evernote.com/img/backgrounds/patterns/main-green.png");
+          background-repeat: repeat;
+        }
+
+        .bg-color.red {
+          background-color: #ffffff;
+        }
+
+        .content-wrapper {
+          height: 618px;
+        }
+
+        .font {
+          
+          display: block;
+          font-size: 56px;
+          line-height: 72px;
+          color: white;
+        }
+
+        .description {
+          
+          font-size: 24px;
+          line-height: 40px;
+          margin-bottom: 35px;
+          color: white;
+        }
+
+        .arrange-content {
+          padding-top: 128px;
+        }
+
+        .left-pad {
+          padding-left: 65px;
+        }
+
+        .laptop {
+          width: 91.7%;
+        }
+
+        .image {
+          display: inline-block;
+        }
+
+        .design {
+          color: white;
+          width: 242px;
+          height: 57px;
+          font-weight: bold;
+        }
+
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+          .font {
+            font-family: 'Lato', sans-serif;
+            display: block;
+            font-size: 25px;
+            line-height: 36px;
+            color: white;
+          }
+          .laptop {
+            display: none;
+          }
+        }
+      </style>
+   </head>
+   <body>  
+      <div class="bg-color green ">
+         <div class="container-fluid">
+		 <div class="content-wrapper">
+            <div class="row">
+               <div class="col-md-6 col-lg-6">
+                  <p >
+                    <img src="{% static 'flights/airstarline.png' %}"  alt="Airstarline" >
+                  </p>
+                  <p class="description left-pad"> Evernote helps you capture and prioritize ideas, projects, and to-do lists, so nothing falls through <br/>the cracks.</p>
+          {% if not user.is_authenticated %}       
+				  <div class="left-pad">
+                  <a class="nav-link" href="{% url 'staff_login' %}"><button type="button" class=" btn btn-default design ">Login</button></a>
+				  </div>
+          {% endif %}
+               </div>
+               <div class="col-md-6 col-lg-6 ">
+                  <img src="{% static 'flights/airplane1.png' %}"  alt="Airplane" >
+               </div>
+            </div>
+			</div>
+         </div>
+      </div>
+      
+   </body>
+</html>
+{% endblock %}

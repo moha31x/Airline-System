@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Staff Report Generation{% endblock %}
+{% block body %}
+    <h3>Flight</h3>
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Flight No.</th>
+      <th scope="col">PNR</th>
+      <th scope="col">Name</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Nationality</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Checked In Status</th>
+      <th scope="col">Booked by</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for passenger in passengers %}
+        <tr>
+          <td>{{ passenger.flight_no.flight_no}}</td>
+          <td>{{ passenger.pnr}}</td>
+          <td>{{ passenger.first_name}} {{ passenger.last_name}}</td>
+          <td>{{ passenger.dob}}</td>
+          <td>{{ passenger.nationality}}</td>
+          <td>{{ passenger.gender}}</td>
+          <td>
+            {% if passenger.checked_in_status == 0 %}
+                <a href="{% url 'staff_check_in' passenger.pk%}" class="btn btn-outline-danger" role="button">Check In</a>
+            {% else %}
+                <button type="button" class="btn btn-success disabled">Checked In</button>
+            {% endif %}
+          </td>
+          <td>{{ passenger.booked_by}}</td>
+          <td><a class="btn btn-danger" href="{% url 'pdf_invoice' passenger.pk%}" target="_blank">View Invoice</a></td>
+          <td><a href="{% url 'dl_invoice' passenger.pk%}" class="btn btn-info">Download Invoice</a></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a class="btn btn-info" href="{% url 'pdf_view' flight_no %}" target="_blank">Generate PDF</a>
+<a href="{% url 'pdf_download' flight_no %}" class="btn btn-info">Download PDF</a>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Flight Report</title>
+    <style type="text/css">
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      a {
+        color: #000000;
+        text-decoration: underline;
+      }
+      header {
+        padding: 10px 0;
+        margin-bottom: 30px;
+      }
+
+      #logo {
+        text-align: center;
+        margin-bottom: 5px;
+      }
+
+      #logo img {
+        width: 200px;
+      }
+      h3 {
+        color: #000000;
+        font-size: 1.2em;
+        line-height: 1.2em;
+        font-weight: normal;
+        text-align: center;
+        background: url("https://evernote.com/img/backgrounds/patterns/main-green.png");
+      }
+    </style>
+    <header class="clearfix">
+      <div id="logo">
+        <img src="https://i.imgur.com/gAO3XQl.png" title="source: imgur.com" />
+      </div>
+      <h3><b>Flight Report</b></h3>
+    </header>
+    <hr>
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Flight No.</th>
+      <th scope="col">PNR</th>
+      <th scope="col">Name</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Nationality</th>
+      <th scope="col">Booked by</th>
+      <th scope="col">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for passenger in passengers %}
+        <tr>
+          <td>{{ passenger.flight_no.flight_no}}</td>
+          <td>{{ passenger.pnr}}</td>
+          <td>{{ passenger.first_name}} {{ passenger.last_name}}</td>
+          <td>{{ passenger.dob}}</td>
+          <td>{{ passenger.nationality}}</td>
+          <td>{{ passenger.booked_by}}</td>
+          <td>{{ passenger.flight_no.cost}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
