@@ -76,13 +76,19 @@ WSGI_APPLICATION = 'airstarline.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+db_user = os.environ.get('DBUSER')
+db_pass = os.environ.get('DBPASS')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mysq;',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'airstarlinedb',
+        'USER': db_user,
+        'PASSWORD': db_pass,
+        'HOST': 'localhost'
     }
 }
+
 
 
 # Password validation
